@@ -9,7 +9,13 @@ class Watershed(models.Model):
     latitude = models.FloatField(null=True, blank=True)
     longitude = models.FloatField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    def __str__(self): return f"{self.name} ({self.code})"
+
+    class Meta:
+        ordering = ["-created_at"]
+
+    def __str__(self):
+        return f"{self.name} ({self.code})"
+
 
 class HealthScore(models.Model):
     watershed = models.ForeignKey(Watershed, on_delete=models.CASCADE, related_name="health_scores")
@@ -18,4 +24,9 @@ class HealthScore(models.Model):
     soil_moisture = models.FloatField(default=0)
     water_recharge = models.FloatField(default=0)
     composite_score = models.FloatField(default=0)
-    def __str__(self): return f"{self.watershed.code} @ {self.date}"
+
+    class Meta:
+        ordering = ["-date"]
+
+    def __str__(self):
+        return f"{self.watershed.code} @ {self.date}"

@@ -1,6 +1,6 @@
 from rest_framework import viewsets
 from .models import Watershed, HealthScore
-from .serializers import 
+from .serializers import WatershedSerializer, HealthScoreSerializer
 
 class WatershedViewSet(viewsets.ModelViewSet):
     queryset = Watershed.objects.all()
