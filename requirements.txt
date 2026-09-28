@@ -1,0 +1,9 @@
+Django==4.2.7
+djangorestframework
+django-cors-headers
+djangorestframework-simplejwt
+psycopg[binary]
+dj-database-url
+python-dotenv
+whitenoise
+Pillow
